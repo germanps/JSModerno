@@ -26,4 +26,5 @@ body {
 .content-list li a{
   color: #fff;
   text-decoration: none;
+  text-align: center;
 }
