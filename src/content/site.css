@@ -20,6 +20,9 @@ body {
   margin-bottom: .5rem;
   margin-right: 1rem;
 }
+.content-list.fundamentos li{
+  background-color: cornflowerblue;
+}
 .content-list li:last-child{
   margin-right: 0;
 }
@@ -33,11 +36,19 @@ body {
   align-items: center;
   justify-content: center;
 }
-h2{
+h2.fundamentos,
+h3.fundamentos{
   text-align: center;
-  background-color: teal;
+  background-color: cornflowerblue;
   color: snow;
+  padding: 1rem 0;
 }
 a{
   color: teal;
+}
+.btn{
+  background-color: indianred;
+  color: white;
+  border-radius: 0;
+  margin-left: 15px;
 }
