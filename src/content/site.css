@@ -23,6 +23,9 @@ body {
 .content-list.fundamentos li{
   background-color: cornflowerblue;
 }
+.content-list.dom li{
+  background-color: chocolate;
+}
 .content-list li:last-child{
   margin-right: 0;
 }
@@ -36,19 +39,40 @@ body {
   align-items: center;
   justify-content: center;
 }
-h2.fundamentos,
-h3.fundamentos{
+
+h3{
   text-align: center;
-  background-color: cornflowerblue;
   color: snow;
   padding: 1rem 0;
 }
-a{
-  color: teal;
+h3.heading{
+  background-color: teal;
 }
+h3.fundamentos{
+  background-color: cornflowerblue;
+}
+
+h3.dom{
+  background-color: chocolate;
+
+}
+
+
+
+/*botones*/
 .btn{
   background-color: indianred;
   color: white;
   border-radius: 0;
   margin-left: 15px;
+  margin-bottom: 1rem;
+}
+.ir{
+  background-color: darkcyan;
+  color: white;
+  border-radius: 0;
+  display: inline-block;
+  padding: 6px 12px;
+  margin-left: 0;
+  margin-bottom: 1rem;
 }
