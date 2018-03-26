@@ -1,4 +1,4 @@
-// Eliminar de Local Storage
+/* // Eliminar de Local Storage
 localStorage.clear();
 let elemento;
 elemento = document;
@@ -33,4 +33,21 @@ console.log(imagenesArray);
 
 imagenesArray.forEach(function(imagen){
     console.log(imagen);
+}); */
+
+//getElementoById
+let encabezado;
+encabezado = document.getElementById('encabezado').innerText;
+console.log(encabezado);
+
+//querySelector
+const encabezado2 = document.querySelector('#encabezado');
+console.log(encabezado2);
+//querySelectorAll
+const enlaces = document.querySelectorAll('.enlace');
+enlaces.forEach(element => {
+    console.log(element);
 });
+let primerEnlace = document.querySelector('#principal .enlace:first-child');
+console.log(primerEnlace);
+console.log(`El primer enlace: ${primerEnlace}`);
