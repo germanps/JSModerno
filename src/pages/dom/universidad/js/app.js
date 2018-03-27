@@ -68,7 +68,53 @@ enlaces.forEach(function(enlace) {
 }); */
 
 //querySelectorAll
-const enlaces = document.querySelectorAll('#principal .enlace:nth-child(odd');
+/* const enlaces = document.querySelectorAll('#principal .enlace:nth-child(odd');
 enlaces.forEach(function(enlace){
     console.log(enlace);
 })
+ */
+
+ /*******Traversing**********/
+/*  const navegacion = document.querySelector('#principal');
+ //chilNodes retorna todos los hijos (incluyendo los espacios en blanco)
+ console.log(navegacion.childNodes);
+ //children retorna los hijos sin espacios (solo los tags)
+ console.log(navegacion.children);
+ //nodeName retorna el nombre del tag
+ console.log(navegacion.children[0].nodeName); */
+ /*nodeType
+   1 => Elementos html
+   2 => atributos
+   3 => text node
+   8 => comentarios
+   9 => documentos
+   10 => doctype
+*/
+/* console.log(navegacion.children[0].nodeType);
+const barra = document.querySelector('.barra');
+console.log(barra.children[0].children[0].querySelector('.icono1'));
+
+const cursos = document.querySelectorAll('.card');
+console.log(cursos);
+console.log(cursos[0].lastElementChild); 
+console.log(navegacion.children);*/
+
+//Traversing del hijo al padre
+/* const enlaces = document.querySelectorAll('.enlace');
+//console.log(enlaces[0].parentNode);
+const cursos = document.querySelectorAll('.card');
+cursos.forEach(element => {
+   // console.log(element);
+});
+let ejemploTraversing = cursos[0].parentElement.parentElement.parentElement.children[0].textContent;
+console.log(ejemploTraversing); */
+
+//Traversing del hermano al hermano
+const enlaces = document.querySelectorAll('.enlace');
+enlaces.forEach(element => {
+    console.log(element);
+});
+/* let hermanoAnterior = enlaces[4].previousElementSibling;
+console.log(hermanoAnterior);  */
+let crazyTraversing = enlaces[0].nextElementSibling.nextElementSibling.parentElement.children;
+console.log(crazyTraversing);
