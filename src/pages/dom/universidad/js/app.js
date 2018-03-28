@@ -147,7 +147,7 @@ console.log(anterior.parentElement); */
 //navegacion.removeChild(enlaces[0]);//desde el padre
 //console.log(navegacion);
 
-const primerLi = document.querySelector('.enlace');
+/* const primerLi = document.querySelector('.enlace');
 let elemento;
 elemento = primerLi.className;
 console.log(elemento);
@@ -167,6 +167,6 @@ elemento = primerLi.hasAttribute('data-id');//comprueba el atributo
 //elemento = primerLi;
 console.log(elemento);
 
-//primerLi.removeAttribute('data-id');
+//primerLi.removeAttribute('data-id');//borra un atributo
 elemento = primerLi;
-console.log(elemento);
+console.log(elemento); */
