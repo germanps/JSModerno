@@ -110,11 +110,31 @@ let ejemploTraversing = cursos[0].parentElement.parentElement.parentElement.chil
 console.log(ejemploTraversing); */
 
 //Traversing del hermano al hermano
-const enlaces = document.querySelectorAll('.enlace');
+/* const enlaces = document.querySelectorAll('.enlace');
 enlaces.forEach(element => {
     console.log(element);
-});
+}); */
 /* let hermanoAnterior = enlaces[4].previousElementSibling;
 console.log(hermanoAnterior);  */
-let crazyTraversing = enlaces[0].nextElementSibling.nextElementSibling.parentElement.children;
-console.log(crazyTraversing);
+/* let crazyTraversing = enlaces[0].nextElementSibling.nextElementSibling.parentElement.children;
+console.log(crazyTraversing); */
+
+//Crear elementos
+const enlace = document.createElement('a');
+enlace.className = 'enlace';
+enlace.id = 'nuevoId';
+enlace.setAttribute('href', '#');
+enlace.textContent = 'Nuevo enlace';
+enlace.style.color = 'orange';
+document.querySelector('#secundaria').appendChild(enlace);
+console.log(enlace);
+
+//Reemplazar elmementos
+const nuevoEncabezado = document.createElement('h2');
+nuevoEncabezado.id = 'nuevoEncabezado';
+nuevoEncabezado.appendChild( document.createTextNode('Los mejores cursos') );
+console.log(nuevoEncabezado);
+const anterior = document.querySelector('#encabezado');
+const elPadre = document.querySelector('#lista-cursos');
+elPadre.replaceChild(nuevoEncabezado, anterior);
+console.log(anterior.parentElement);
