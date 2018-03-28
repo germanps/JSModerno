@@ -120,7 +120,7 @@ console.log(hermanoAnterior);  */
 console.log(crazyTraversing); */
 
 //Crear elementos
-const enlace = document.createElement('a');
+/* const enlace = document.createElement('a');
 enlace.className = 'enlace';
 enlace.id = 'nuevoId';
 enlace.setAttribute('href', '#');
@@ -137,4 +137,36 @@ console.log(nuevoEncabezado);
 const anterior = document.querySelector('#encabezado');
 const elPadre = document.querySelector('#lista-cursos');
 elPadre.replaceChild(nuevoEncabezado, anterior);
-console.log(anterior.parentElement);
+console.log(anterior.parentElement); */
+
+/*Agregar y quitar atributos*/
+//const enlaces = document.querySelectorAll('.enlace');
+//const navegacion = document.querySelector('#principal');
+//borrar elemento
+//enlaces[0].remove();
+//navegacion.removeChild(enlaces[0]);//desde el padre
+//console.log(navegacion);
+
+const primerLi = document.querySelector('.enlace');
+let elemento;
+elemento = primerLi.className;
+console.log(elemento);
+elemento = primerLi.classList.add('nueva-clase');
+elemento = primerLi.classList;
+console.log(elemento);
+elemento = primerLi.classList.remove('nueva-clase');
+elemento = primerLi.classList;
+console.log(elemento);
+
+//leer atributos
+elemento = primerLi.getAttribute('href');//obtiene el valor
+console.log(elemento);
+primerLi.setAttribute('href', 'http://facebook.com');//modifica el valor
+primerLi.setAttribute('data-id', 20);
+elemento = primerLi.hasAttribute('data-id');//comprueba el atributo
+//elemento = primerLi;
+console.log(elemento);
+
+//primerLi.removeAttribute('data-id');
+elemento = primerLi;
+console.log(elemento);
