@@ -48,3 +48,41 @@ function obtenerEvento(e){
   //document.querySelector('#encabezado').innerText = busqueda.value;
   console.log(`Evento: ${e.type}`); //reporta el evento que se está usando
 }
+
+//Event BUBBLING (detener propagación)
+/* const card = document.querySelector('.card');
+const infoCurso = document.querySelector('.info-card');
+const agregarCarrito = document.querySelector('.agregar-carrito');
+
+card.addEventListener('click', function(e){
+  console.log('click en card');
+  e.stopPropagation();
+});
+
+infoCurso.addEventListener('click', function(e){
+  console.log('click en infoCurso');
+  e.stopPropagation();
+});
+
+agregarCarrito.addEventListener('click', function(e){
+  console.log('click en agregarCarrito');
+  e.stopPropagation();
+}); */
+
+//Delegation
+document.body.addEventListener('click', eliminarElemento, false);
+function eliminarElemento(e){
+  e.preventDefault();
+/*   console.log('click'); 
+  console.log(e.target.classList); */
+
+  if (e.target.classList.contains('borrar-curso')) {
+    console.log('Contiene la clase'); 
+    e.target.parentElement.parentElement.remove();
+  }else{
+    console.log('No contiene la clase'); 
+  }
+  if (e.target.classList.contains('agregar-carrito')) {
+    console.log('Curso agregado'); 
+  }
+}
