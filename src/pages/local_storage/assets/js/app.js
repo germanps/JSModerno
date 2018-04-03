@@ -25,6 +25,8 @@ function agregarTweet (e) {
    //crear elemento y añadirlo a la lista
    const li = document.createElement('li');
    li.innerText = tweet;
+   //añadir boton borrar al tweet
    li.appendChild(botonBorrar);
+   //añade el tweet a la lista
    listaTweets.appendChild(li);
 }

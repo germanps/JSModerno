@@ -1,4 +1,3 @@
-console.log('listeners');
 //EventListener click
 /* document.querySelector('#submit-buscador').addEventListener('click', eventoclick, false);
 function eventoclick(e) {
