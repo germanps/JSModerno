@@ -4,7 +4,9 @@ body{
 h1, h2 {
     text-align: center;
 }
-
+br{
+    display: none;
+}
 #contenido {
     margin-top: 40px;
 }
