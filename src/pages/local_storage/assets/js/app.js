@@ -1,9 +1,6 @@
 //Variables
 const listaTweets = document.querySelector('#lista-tweets');
 
-
-
-
 //Event listenerts
 eventListeners();
 function eventListeners(){
@@ -11,6 +8,8 @@ function eventListeners(){
   document.querySelector('#formulario').addEventListener('submit',agregarTweet,false);
   //Borrar tweets
   listaTweets.addEventListener('click', borrarTweet, false);
+  //Contenido cargado
+  document.addEventListener('DOMContentLoaded', localStorageListo, false);
 }
 
 //Functions
@@ -43,6 +42,30 @@ function borrarTweet(e){
   if(e.target.className === "borrar-tweet"){
     e.target.parentElement.remove();
   }
+}
+
+//Mostrar datos del local storage en la lista
+function  localStorageListo() {
+  let tweets;
+
+  tweets = obtenerTweetsLocalStorage();
+  
+  tweets.forEach(function(tweet){
+    //crear elemento borrar
+    const botonBorrar = document.createElement('a');
+    botonBorrar.classList = 'borrar-tweet';
+    botonBorrar.innerText = 'X';
+
+    //crear elemento y añadirlo a la lista
+    const li = document.createElement('li');
+    li.innerText = tweet;
+
+    //añadir boton borrar al tweet
+    li.appendChild(botonBorrar);
+
+    //añade el tweet a la lista
+    listaTweets.appendChild(li);
+  });
 }
 
 function agregarLocalStorage (tweet) {
