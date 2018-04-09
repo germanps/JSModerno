@@ -63,10 +63,14 @@ function insetarCarrito (curso) {
 //Eliminar el curso del carrito (DOM)
 function eliminarCurso (e){
   e.preventDefault();
-  let curso;
+  let curso, cursoId;
   if(e.target.classList.contains('borrar-curso')){
     e.target.parentElement.parentElement.remove();
+    curso = e.target.parentElement.parentElement;
+    cursoId = curso.querySelector('a').getAttribute('data-id');
+    console.log(cursoId);
   }
+  elimininarCusrsoLocalStorage(cursoId);
 }
 
 //Vaciar el carrito
@@ -124,4 +128,10 @@ function leerLocalStorage () {
     `;
     listaCursos.appendChild(row);
   });
+}
+
+function elimininarCusrsoLocalStorage (curso) {
+  //let cursos, cursoBorrar;
+
+  //console.log(curso);
 }
