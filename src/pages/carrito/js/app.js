@@ -43,7 +43,6 @@ function leerDatosCurso (curso) {
 
 function insetarCarrito (curso) {
    const row = document.createElement('tr');
-   console.log(curso);
    row.innerHTML = `
       <td>
          <img src='${curso.imagen}'>
@@ -55,7 +54,7 @@ function insetarCarrito (curso) {
       </td>
    `;
    listaCursos.appendChild(row);
-   console.log(curso.imagen);
+   guardarCursoLocalStorage(curso);
 }
 
 //Eliminar el curso del carrito (DOM)
@@ -74,4 +73,30 @@ function vaciarCarrito () {
     listaCursos.removeChild(listaCursos.firstChild);    
   }
   return false;
+}
+
+//Guardar curso en el local storage
+function guardarCursoLocalStorage (curso) {
+  let cursos;
+  //Obtenemos los cursos del local storage (si los hay, si no vendrá un array vacio)
+  cursos = obtenereCursosLocalStorage();
+  //agregamos el curso actual al array
+  cursos.push(curso);
+
+  localStorage.setItem('cursos', JSON.stringify(cursos));
+  console.log(cursos);
+}
+
+//Obtener los cursos del local storage
+function obtenereCursosLocalStorage () {
+  let cursosLS;
+
+  //Comprobamos si hay items en el local storage
+  if(localStorage.getItem('cursos') === null) {
+    //si no hay cursos en el LS inicias como array vacio
+    cursosLS = [];
+  }else{
+    cursosLS = JSON.parse(localStorage.getItem('cursos'));
+  }
+  return cursosLS;
 }
