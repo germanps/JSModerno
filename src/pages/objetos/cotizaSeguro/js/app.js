@@ -7,14 +7,30 @@ function Seguro (marca, anio, tipo) {
 }
 // Todo lo que se muestra
 function Interfaz(){} //Inicia vacio
+// Prototypes
+Interfaz.prototype.mostrarError = function(mensaje, tipo){
+  const div = document.createElement('div');
+  if (tipo === 'error') {
+    div.classList.add('mensaje', 'error' , 'prueba');
+  }else{
+    div.classList.add('mensaje', 'correcto');
+  }
+  //agregamos el mensaje en el div
+  div.innerHTML = `${mensaje}`;
+  formulario.insertBefore(div, document.querySelector('.form-group'));
+
+  //borrar mensaje
+  setTimeout(function() {
+    document.querySelector('.mensaje').remove();
+  }, 2000);
+}
+
 
 
 /***** Eventlisteners ****/
 const formulario = document.getElementById('cotizar-seguro');
 formulario.addEventListener('submit', enviaFormulario, false);
 window.addEventListener('load', rellenaSelectAnios, false);
-
-
 
 
 
@@ -32,16 +48,15 @@ function enviaFormulario (e) {
   // Lee el valor del radioButton
   const tipo = document.querySelector('input[name="tipo"]:checked').value;
 
-
   // Crear instancia de Interfaz
   const interfaz = new Interfaz();
   // Revisar que los campos no estén vacíos
   if (marcaSeleccionada === '' || anioSeleccionado === '' || tipo === '') {
     // Interfaz: Imprime un error
-    console.log('faltan datos');
+    interfaz.mostrarError('Faltan datos', 'error');
   }else{
     // Interfaz: Imprime una vista correcta 
-    console.log('datos enviados!');
+    interfaz.mostrarError('Datos correctos', 'correcto');
   }
 
 }
