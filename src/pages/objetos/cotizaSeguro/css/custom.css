@@ -3,6 +3,10 @@ body {
 background: -webkit-linear-gradient(to right, #904e95, #e96443);  /* Chrome 10-25, Safari 5.1-6 */
 background: linear-gradient(to right, #904e95, #e96443); 
 }
+ul{
+    list-style: none;
+    padding: 0;
+}
 .btn.btn-raised.btn-primary {
     background-color: #00838F!important;
     font-size: 16px;
@@ -62,7 +66,7 @@ header h1 {
 #resultado div {
     border: 1px solid #26C6DA;
     text-align: center;
-    padding: 0  0 20px 0;
+    padding: 0.5rem;
 }
 #resultado div p {
     margin-bottom: 0;

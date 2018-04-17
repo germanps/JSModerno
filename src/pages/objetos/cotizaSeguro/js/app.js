@@ -28,7 +28,6 @@ Seguro.prototype.cotizarSeguro = function(){
       cantidad = base * 1.35;
       break;
   }
-  console.log(cantidad);
 
   //leer el año del coche
   //diferencia de años
@@ -45,16 +44,18 @@ Seguro.prototype.cotizarSeguro = function(){
   }else{
     cantidad *= 1.50;
   }
-  console.log(cantidad);
+  return(cantidad);
 
 }
+
+
 // Todo lo que se muestra
 function Interfaz(){} //Inicia vacio
 // Prototypes
 Interfaz.prototype.mostrarError = function(mensaje, tipo){
   const div = document.createElement('div');
   if (tipo === 'error') {
-    div.classList.add('mensaje', 'error' , 'prueba');
+    div.classList.add('mensaje', 'error');
   }else{
     div.classList.add('mensaje', 'correcto');
   }
@@ -66,6 +67,39 @@ Interfaz.prototype.mostrarError = function(mensaje, tipo){
   setTimeout(function() {
     document.querySelector('.mensaje').remove();
   }, 2000);
+}
+//Impreime el resultado de la cotización
+Interfaz.prototype.mostrarResultado = function(seguro, total){
+  const resultado  = document.getElementById('resultado');
+  let marca;
+  switch (seguro.marca) {
+    case '1':
+      marca = 'Americano'
+      break;
+    case '2':
+      marca = 'Asiático'
+      break;
+    case '3':
+      marca = 'Europeo'
+      break;
+  }
+  const div = document.createElement('div');
+  div.setAttribute('class', 'resumen');
+
+  div.innerHTML = `<ul>
+                      <li>Resumen del seguro</li>
+                      <li>Marca: ${marca}</li>
+                      <li>Año: ${seguro.anio}</li>
+                      <li>Tipo: ${seguro.tipo}</li>
+                      <li>Precio: ${total}</li>
+                    </ul>
+                  `;
+  
+  console.log(div.length);               
+  
+    resultado.appendChild(div);
+
+  
 }
 
 
@@ -102,7 +136,7 @@ function enviaFormulario (e) {
     const seguro = new Seguro(marcaSeleccionada, anioSeleccionado, tipo);
     //Prototype de cotizar un seguro
     const cotizacion = seguro.cotizarSeguro(seguro);
-    interfaz.mostrarError('Datos correctos', 'correcto');
+    interfaz.mostrarResultado(seguro, cotizacion);
   }
 
 }
