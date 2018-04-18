@@ -66,12 +66,11 @@ header h1 {
 #resultado div {
     border: 1px solid #26C6DA;
     text-align: center;
-    padding: 0.5rem;
 }
 #resultado div p {
     margin-bottom: 0;
 }
-#resultado div p.header {
+#resultado .header {
     background-color: #26C6DA;
     margin-bottom: 10px;
     color:white;
