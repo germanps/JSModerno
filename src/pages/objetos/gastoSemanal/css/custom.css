@@ -12,7 +12,6 @@ header {
 .contenido-principal {
     background-color: white;
     padding: 30px;
-    border-radius: 20px;
 }
 .presupuesto p{
     margin-bottom: 0;
@@ -35,4 +34,12 @@ h2 {
     color:#004e92;
     font-size: 22px;
     margin-bottom:30px;
+}
+
+#agregarPresupuesto{
+    margin-top: 1rem;
+}
+
+.btn, .form-control, .alert{
+    border-radius: 0;
 }
