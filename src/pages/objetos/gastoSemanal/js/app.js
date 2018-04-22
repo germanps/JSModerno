@@ -1,7 +1,7 @@
 // Variables
 const agregarPresupuesto = document.getElementById('agregarPresupuesto');
 const formulario = document.getElementById('agregarGasto');
-let presupuesto;
+let presupuesto; //objeto que almacena el presupuesto(global)
 let cantidadPresupuesto;
 let gasto;
 
@@ -58,6 +58,14 @@ class Interfaz {
         `;
         gastoListado.appendChild(liGasto);
    }
+   // comprueba el presupuesto restante
+   presupuestoRestante(cantidad){
+       const restante = document.querySelector('#restante');
+       //leemos el presupuesto restante
+       const presupuestoRestanteUsuario = cantidadPresupuesto.presupuestoRestante(cantidad);
+       //imprime en pantalla el restante
+       restante.innerHTML = presupuestoRestanteUsuario;
+   }
 }
 
 
@@ -97,5 +105,6 @@ function agregaGasto (e){
    }else{
       ui.imprimirMensaje('Correcto', 'correcto');
       ui.agregarGastoListado(gasto, cantidad);
+      ui.presupuestoRestante(cantidad);
    }
 }
