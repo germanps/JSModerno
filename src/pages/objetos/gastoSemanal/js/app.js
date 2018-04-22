@@ -19,6 +19,7 @@ class Presupuesto {
 
 // clase para controlar el html
 class Interfaz {
+    //inicializa el presupuesto
    insertarPresupuesto(cantidad){
       const presupuestoSpan = document.querySelector('#total');
       const restanteSpan = document.querySelector('#restante');
@@ -27,6 +28,7 @@ class Interfaz {
       presupuestoSpan.innerHTML = `${cantidad}`;
       restanteSpan.innerHTML = `${cantidad}`;
    }
+   //imprime mensaje (tanto error como correcto)
    imprimirMensaje(mensaje, tipo){
       const divMensaje = document.createElement('div');
       divMensaje.classList.add('text-center', 'alert');
@@ -43,6 +45,18 @@ class Interfaz {
       setTimeout(function(){
          document.querySelector('.primario .alert').remove();
       }, 3000);
+   }
+   //inserta gastos en la lista
+   agregarGastoListado(nombre, cantidad){
+        const gastoListado = document.querySelector('#gastos ul');
+        const liGasto = document.createElement('li');
+        liGasto.className = 'list-group-item d-flex justify-content-between align-items-center';
+        //Insertat gasto
+        liGasto.innerHTML = `
+            ${nombre}
+            <span class="badge badge-primary badge-pill">${cantidad}€</span>
+        `;
+        gastoListado.appendChild(liGasto);
    }
 }
 
@@ -81,6 +95,7 @@ function agregaGasto (e){
       // imprimir mensaje (dos parametros, tipo y mensaje)
       ui.imprimirMensaje('Hubo un error', 'error');
    }else{
-      console.log('Datos correctos');
+      ui.imprimirMensaje('Correcto', 'correcto');
+      ui.agregarGastoListado(gasto, cantidad);
    }
 }
