@@ -69,7 +69,7 @@ function eliminarCurso (e){
     curso = e.target.parentElement.parentElement;
     cursoId = curso.querySelector('a').getAttribute('data-id');
   }
-  elimininarCusrsoLocalStorage(cursoId);
+  elimininarCursoLocalStorage(cursoId);
 }
 
 //Vaciar el carrito
@@ -133,7 +133,7 @@ function leerLocalStorage () {
   });
 }
 
-function elimininarCusrsoLocalStorage (curso) {
+function elimininarCursoLocalStorage (curso) {
    let cursosLS;
    //Obtenemos el array del local storage
    cursosLS = obtenereCursosLocalStorage();
