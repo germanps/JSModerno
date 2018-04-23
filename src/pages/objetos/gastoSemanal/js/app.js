@@ -65,6 +65,25 @@ class Interfaz {
        const presupuestoRestanteUsuario = cantidadPresupuesto.presupuestoRestante(cantidad);
        //imprime en pantalla el restante
        restante.innerHTML = presupuestoRestanteUsuario;
+       this.comprobarPresupuestoColor();
+   }
+
+   // Cambia de color el presupuesto restante
+   comprobarPresupuestoColor(){
+       const presupuestoTotal = cantidadPresupuesto.presupuesto;
+       const presupuestoRestante = cantidadPresupuesto.restante;
+       console.log(`${presupuestoTotal} => ${presupuestoRestante}`);
+
+       //comprobar el 25% del gasto
+       const restante = document.querySelector('.restante');
+       if((presupuestoTotal / 4) > presupuestoRestante){
+            restante.classList.remove('alert-success', 'alert-warning');
+            restante.classList.add('alert-danger');
+       }else if ((presupuestoTotal / 2) > presupuestoRestante) {
+            //comprobar el 50% del gasto
+            restante.classList.remove('alert-success');
+            restante.classList.add('alert-warning');
+       }
    }
 }
 
@@ -88,6 +107,7 @@ function creaPresupuesto (e) {
       //Instanciamos la clase para la interfaz
       const ui = new Interfaz();
       ui.insertarPresupuesto(cantidadPresupuesto.presupuesto);
+      //guardarPresupuestoLocalStorage(presupuesto)
    }
     
 }
@@ -108,3 +128,10 @@ function agregaGasto (e){
       ui.presupuestoRestante(cantidad);
    }
 }
+
+
+
+/* Local Storage */
+function guardarPresupuestoLocalStorage(presupuesto) {
+    localStorage.setItem('presupuesto', JSON.stringify(cantidadPresupuesto));
+}  
