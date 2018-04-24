@@ -11,10 +11,6 @@ function cargarNombres(e) {
    const generoSeleccionado = genero.options[genero.selectedIndex].value;
 
    const cantidad = document.getElementById('numero').value;
-
-   console.log(origenSeleccionado);
-   console.log(generoSeleccionado);
-   console.log(cantidad);
    
    let url = '';
    url += 'http://uinames.com/api/?';
@@ -31,4 +27,25 @@ function cargarNombres(e) {
       url += `amount=${cantidad}`;
    }
    console.log(url);
+   //Iniciar XMLHttpRequest
+   const xhr = new XMLHttpRequest();
+   xhr.open('GET', url, true);
+   xhr.onload = function(){
+      if (this.status === 200) {
+         const resultado = document.getElementById('resultado');
+         const respuesta = JSON.parse(this.responseText);
+         let htmlNombres = "<h2>Nombres Generados</h2>";
+         htmlNombres += "<ul class='lista'>";
+
+         //imprimir nombres
+         respuesta.forEach(function (nombre) {
+            htmlNombres += `<li>Nombre: ${nombre.name}`;
+         });
+
+         htmlNombres +="</ul>"
+         resultado.innerHTML = htmlNombres;
+         console.log(respuesta);
+      }
+   }
+   xhr.send();
 }
