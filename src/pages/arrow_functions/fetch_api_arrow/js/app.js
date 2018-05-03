@@ -10,20 +10,17 @@ function cargarTxt(){
   //El primer then redefinimos la conexion y como queremos traer los datos
     .then( response => response.text() )
     .then( data => document.getElementById('resultado').innerHTML = data)
-    .catch( error => console.log(error) 
-  )
+    .catch( error => console.log(error) );
 }
 
 
 //Archivo JSON
 function cargarJSON(){
   fetch('empleados.json')
-    .then(function(response){
-      return response.json();
-    })
-    .then(function(data){
+    .then( response => response.json() )
+    .then( data => {
       let html = '<ul>';
-      data.forEach(function(el) {
+      data.forEach(el => {
         html += `<li>
                   <span>${el.nombre}: </span>
                   <span>${el.puesto}</span>
@@ -32,20 +29,15 @@ function cargarJSON(){
       html += '</ul>';
       document.getElementById('resultado').innerHTML = html;
     })
-    .catch(function(error){
-      console.log(error);
-    })
+    .catch( error =>  console.log(error) );
 }
 
 function cargarREST () {
   fetch('https://jsonplaceholder.typicode.com/photos')
-    .then(function(response){
-      return response.json();
-    })
-    .then(function(data){
-      console.log(data)
+    .then(response => response.json() )
+    .then( data => {
       let html = '<ul>';
-      data.forEach(function(imagen){
+      data.forEach(imagen => {
         html += `
           <li>
             <a href="${imagen.url}" target="blank" title="Album:${imagen.albumId} Imagen:${imagen.id}">
@@ -58,7 +50,5 @@ function cargarREST () {
       html += '</ul>';
       document.getElementById('resultado').innerHTML = html;
     })
-    .catch(function(error){
-
-    })
+    .catch(error => console.log(error) );
 }
