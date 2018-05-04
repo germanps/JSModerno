@@ -1,5 +1,4 @@
 // Asyn await
-
 async function obtenerClientes() {
    //Siempre va a requerir un promise
    const clientes = new Promise((resolve, reject) => {
@@ -24,3 +23,15 @@ async function obtenerClientes() {
 obtenerClientes()
    .then(res => console.log(res))
    .catch(error => console.log(error));
+
+// Async await con fetch api
+async function leerToDos(){
+   //esperar respuesta
+   const respuesta = await fetch('https://jsonplaceholder.typicode.com/todos');
+
+   // Procede cuando esté la respuesta ok
+   const datos = await respuesta.json();
+   return datos;
+}
+leerToDos()
+   .then( usuarios => console.log(usuarios));
