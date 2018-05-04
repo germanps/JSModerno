@@ -9,10 +9,21 @@ class Interfaz {
    }
 
    construirSelect(){
-      cotizador.obtenerMonedasApi()
-         .then(data => {
-            console.log(data);
-            //construir las options del select
-         })
+      cotizador.obtenerMonedasApi('v1')
+         .then(moneda => {
+            const criptos = moneda.monedas;
+            const combo = document.getElementById('criptomoneda');
+            
+            criptos.forEach(element => {
+               const opt = document.createElement('option');
+               opt.innerText = element.name;
+               opt.value = element.name;
+               combo.appendChild(opt);
+               console.log(opt);
+            });
+            
+         });
+         
+         //construir las options del select 
    }
 }
