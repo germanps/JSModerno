@@ -19,7 +19,6 @@ class Interfaz {
                opt.innerText = element.name;
                opt.value = element.name;
                combo.appendChild(opt);
-               console.log(opt);
             });
             
          });
