@@ -25,4 +25,14 @@ class Interfaz {
          
          //construir las options del select 
    }
+   mostrarMensaje(mensaje, clases){
+      const div = document.createElement('div');
+      div.className = clases;//agregamos las clases
+      div.appendChild(document.createTextNode(mensaje));//agregameos el mensaje
+      const mensajes = document.querySelector('.mensajes');
+      mensajes.appendChild(div);
+      setTimeout(() => {
+            document.querySelector('.mensajes div').remove();
+      }, 3000);
+   }
 }

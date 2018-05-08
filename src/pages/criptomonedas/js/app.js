@@ -15,7 +15,8 @@ formulario.addEventListener('submit', (e) => {
    const criptomonedaSeleccionada = criptomoneda.options[criptomoneda.selectedIndex].value
    
    if (monedaSeleccionada === '' || criptomonedaSeleccionada === '') {
-      console.log('error');
+      // Alerta faltan datos
+      ui.mostrarMensaje('Ambos campos son obligatorios', 'deep-orange darken-4 card-panel');
    }else{
       console.log('cotizando...')
    }
