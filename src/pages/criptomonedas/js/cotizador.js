@@ -34,6 +34,15 @@ class Cotizador {
       return{ monedas }
    }
 
+   async obtenerValores(moneda, criptomoneda, version){
+
+      //Solo para Versión 1
+      const urlConvertir = await fetch(`https://api.coinmarketcap.com/v1/ticker/${criptomoneda}/?convert=${moneda}`);
+      const resultado = await urlConvertir.json();
+      return {
+         resultado
+      }
+   }
 
    //Prueba
    async convertirMoneda(currencyFrom, currencyTo)

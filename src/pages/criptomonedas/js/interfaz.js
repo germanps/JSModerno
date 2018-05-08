@@ -35,4 +35,9 @@ class Interfaz {
             document.querySelector('.mensajes div').remove();
       }, 3000);
    }
+
+   //Imprime resultado de la cotización
+   mostrarResultado(resultado, moneda){
+      console.log(resultado)
+   }
 }

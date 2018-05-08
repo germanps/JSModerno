@@ -18,6 +18,10 @@ formulario.addEventListener('submit', (e) => {
       // Alerta faltan datos
       ui.mostrarMensaje('Ambos campos son obligatorios', 'deep-orange darken-4 card-panel');
    }else{
-      console.log('cotizando...')
+      // Valores correctos (retorna una promesa)
+      cotizador.obtenerValores(monedaSeleccionada, criptomonedaSeleccionada)
+         .then(data => {
+            ui.mostrarResultado(data.resultado[0], monedaSeleccionada.toLowerCase());
+         })
    }
 })
