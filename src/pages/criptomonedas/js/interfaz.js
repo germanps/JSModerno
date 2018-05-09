@@ -38,6 +38,26 @@ class Interfaz {
 
    //Imprime resultado de la cotización
    mostrarResultado(resultado, moneda){
-      console.log(resultado)
+      //Construir etiqueta segun la moneda
+      const etiquetaMoneda =  `price_${moneda}`;
+      //leer el valor del resultado
+      const valor = resultado[etiquetaMoneda];
+      let hora = new Date(resultado.last_updated * 1000);
+      hora = `${hora.getHours()}:${hora.getMinutes()}h`;
+      //Construir el template
+      let templateHTML = '';
+      templateHTML += `
+                        <div class="card cyan darken-3">
+                              <div class="card-content white-text">
+                                    <span class="card-title">Resultado</span>
+                                    <p>El precio de ${resultado.name} a ${moneda.toUpperCase()} es de: ${valor}</p>
+                                    <p>Última hora: ${resultado.percent_change_1h}%</p>
+                                    <p>Última día: ${resultado.percent_change_24h}%</p>
+                                    <p>Últimos 7 días: ${resultado.percent_change_7d}%</p>
+                                    <h5>Última actualización: ${hora}</h5>
+                              </div>
+                        </div>
+                  `;
+      document.querySelector('#resultado').innerHTML = templateHTML;
    }
 }
