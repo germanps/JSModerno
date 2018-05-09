@@ -38,6 +38,14 @@ class Interfaz {
 
    //Imprime resultado de la cotización
    mostrarResultado(resultado, moneda){
+      //Borrar resultado anterior si lo hubiera
+      const resultadoAnterior = document.querySelector('#resultado > div');
+      if(resultadoAnterior){
+            resultadoAnterior.remove();
+      }
+      //Muestra el spinner
+      this.mostrarSpinner();
+
       //Construir etiqueta segun la moneda
       const etiquetaMoneda =  `price_${moneda}`;
       //leer el valor del resultado
@@ -58,6 +66,19 @@ class Interfaz {
                               </div>
                         </div>
                   `;
-      document.querySelector('#resultado').innerHTML = templateHTML;
+      setTimeout(() => {
+            document.querySelector('#resultado').innerHTML = templateHTML;
+            this.borrarSpinner();
+      }, 2000);
+   }
+
+   //Mostrar spinner
+   mostrarSpinner(){
+         const spinner = document.createElement('img');
+         spinner.src = 'img/spinner.gif';
+         document.querySelector('.spinner').appendChild(spinner);
+   }
+   borrarSpinner(){
+         const spinner = document.querySelector('.spinner img').remove();
    }
 }
