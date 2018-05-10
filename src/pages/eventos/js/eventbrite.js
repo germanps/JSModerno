@@ -5,7 +5,10 @@ class EventBrite {
     }
     //Obtiene las categorias en init()
     async obtenerCategorias(){
-        //consultar las categorias a la rest api
-        
+        //consultar las categorias a la rest api(al ser await es una promise)
+        const respuestaCategorias = await fetch(`https://www.eventbriteapi.com/v3/categories/?token=${this.tokeAuth}`);
+        //esperar respuesta y reotornar json
+        const categorias = await respuestaCategorias.json();
+        return{categorias}
     }
 }
