@@ -24,4 +24,22 @@ class Interfaz {
                 });
             })
     }
+    mostrarMensaje(mensaje, clases){
+        const div = document.createElement('div');
+        div.classList = clases; 
+        //agregamos el mensaje al div
+        div.appendChild(document.createTextNode(mensaje));
+        //buscar el padre
+        const buscadorDiv = document.getElementById('buscador');
+        buscadorDiv.appendChild(div);
+        setTimeout(() => {
+            this.limpiarMensaje();
+        }, 2000);
+    }
+    limpiarMensaje(){
+        const alert = document.querySelector('.alert');
+        if (alert) {
+            alert.remove();
+        }
+    }
 }

@@ -11,8 +11,10 @@ document.getElementById('buscarBtn').addEventListener('click', (e) => {
 
    //control buscador
    if(textoBuscador !== ''){
-      console.log(`${textoBuscador} => ${catSeleccionada}`);
+      //hacer la mandanga
+
    }else{
-      console.log('error');
+      //mostrar mensaje error
+      ui.mostrarMensaje('El campo buscador es obligatorio', 'alert alert-danger mt-4');
    }
 }, false);
