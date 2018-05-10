@@ -12,7 +12,10 @@ document.getElementById('buscarBtn').addEventListener('click', (e) => {
    //control buscador
    if(textoBuscador !== ''){
       //hacer la mandanga
-
+      eventbrite.obtenerEventos(textoBuscador, catSeleccionada)
+         .then(eventos => {
+            console.log(eventos);
+         });
    }else{
       //mostrar mensaje error
       ui.mostrarMensaje('El campo buscador es obligatorio', 'alert alert-danger mt-4');
