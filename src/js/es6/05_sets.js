@@ -1,3 +1,4 @@
+//Sets(listas ordenadas)
 let carrito = new Set();
 carrito.add('Camisa');
 carrito.add('Disco1');
