@@ -1,10 +1,25 @@
 class Interfaz{
     constructor() {
+        //Instanciamos la api
+        this.api = new Api();
+
         //Inicializar y obrtener la propiedad del mapa
-        let latLng = {lat: 41.68, lng: 2};
+        this.latLng = {lat: 41.68, lng: 2};
         this.mapa = new google.maps.Map(document.getElementById('mapa'), {
-            center: latLng,
+            center: this.latLng,
             zoom: 9
         });
     }
+    //Mostrar sitio de interes
+    mostrarSitiosInteres(){
+
+        this.api.obtenerDatos()
+            .then(datos => {
+                const resultado = datos.respuestaJSON.elements
+                for (const dato of resultado) {
+                    console.log(dato);
+                }
+            });
+    }
+
 }
