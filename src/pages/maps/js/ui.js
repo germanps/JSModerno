@@ -21,6 +21,8 @@ class Interfaz{
             });
     }
     mostrarMapa(datos){
+        // Almacena infoWindow Activo
+        let infoWindowActivo;
         datos.forEach(dato => {
             // Destructuring
             let {
@@ -48,8 +50,38 @@ class Interfaz{
                     position: latLng,
                     map: this.mapa
                 });
+
+                //Crear el InfoWindow
+                let infoWindow = this.crearInfoWindow(adreca_nom, descripcio, horaris, localitzacio);
+                
+                //Mostrar al hacer click
+                marker.addListener('click', () => {
+                    //cerrar infowindow activo
+                    if (infoWindowActivo) {
+                        infoWindowActivo.close();
+                    }
+
+                    infoWindow.open(this.mapa, marker);
+
+                    //Asignarlo a Activo
+                    infoWindowActivo = infoWindow;
+                })
             }
- 
         });
+    }
+
+    crearInfoWindow(adreca_nom, descripcio, horaris, localitzacio) {
+        let contenido = `
+                <div class="card-info">
+                    <p>Lloc: <span>${adreca_nom}</span></p>
+                    <p>Descripción: <span>${descripcio}</span></p>
+                    <p>Horarios: <span>${horaris}</span></p>
+                    <p>Localización: <span>${localitzacio}</span></p>
+                </div>
+                `
+        let infoWindow = new google.maps.InfoWindow({
+            content: contenido
+        });
+        return infoWindow;
     }
 }
