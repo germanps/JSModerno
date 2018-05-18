@@ -12,8 +12,9 @@ const buscador = document.querySelector('#buscar input');
 buscador.addEventListener('input', () => {
    //si es mayor a 4 buscar sugerencias
    if (buscador.value.length > 3) {
-      console.log('Buscando...');
+      //Obtener sugerencias que sean partes de la búsqueda
+      ui.obtenerSugerencias(buscador.value);
    }else{
       console.log('Esperando...');
    }
-})
+});

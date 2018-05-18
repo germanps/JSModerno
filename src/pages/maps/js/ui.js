@@ -16,7 +16,7 @@ class Interfaz{
 
         this.api.obtenerDatos()
             .then(datos => {
-                const resultado = datos.respuestaJSON.elements
+                const resultado = datos.respuestaJSON.elements;
                 this.mostrarMapa(resultado);
             });
     }
@@ -44,7 +44,6 @@ class Interfaz{
             if(latLng.lat == ''){
                 return false;
             }else{
-                console.log(latLng);
                 //Creamos el marker de google
                 let marker = new google.maps.Marker({
                     position: latLng,
@@ -83,5 +82,29 @@ class Interfaz{
             content: contenido
         });
         return infoWindow;
+    }
+
+    //Obtener las sugerencias de las REST API
+    obtenerSugerencias(busqueda){
+        this.api.obtenerDatos()
+            .then(datos => {
+                //Obtener los resultados
+                const resultados = datos.respuestaJSON.elements;
+                
+                //Metodo para filtrar, enviar el json de la busqueda
+                this.filtrarSugerencias(resultados, busqueda);
+            })
+    }
+
+    // Filtrado de sugerencias
+    filtrarSugerencias(resultados, busqueda){
+        //console.log(resultados);        
+        const filtro = resultados.filter(filtro => filtro.adreca_nom.indexOf(busqueda) > 0);
+           
+        console.log(filtro);
+
+        /* const filtro = dato.filter( filtro => filtro.adreca_nom.indexOf('Sant') !== 1);
+        console.log(filtro); */
+         
     }
 }
