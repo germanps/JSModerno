@@ -15,6 +15,9 @@ buscador.addEventListener('input', () => {
       //Obtener sugerencias que sean partes de la búsqueda
       ui.obtenerSugerencias(buscador.value);
    }else{
-      console.log('Esperando...');
+      //Reiniciar mapa
+      ui.inicializarMapa();
+      //Mostrar lo pines
+      ui.mostrarSitiosInteres();
    }
 });

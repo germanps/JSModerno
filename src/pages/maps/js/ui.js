@@ -2,16 +2,17 @@ class Interfaz{
     constructor() {
         //Instanciamos la api
         this.api = new Api();
-
+        this.inicializarMapa();
+    }
+    inicializarMapa(){
         //Inicializar y obrtener la propiedad del mapa
-        //this.latLng = {lat: 41.68, lng: 2};
         this.latLng = {lat: 41.68, lng: 2};
         this.mapa = new google.maps.Map(document.getElementById('mapa'), {
             center: this.latLng,
             zoom: 9
         });
     }
-    //Mostrar sitio de interes
+    //Mostrar sitio de interes (muestra todos)
     mostrarSitiosInteres(){
 
         this.api.obtenerDatos()
@@ -20,6 +21,7 @@ class Interfaz{
                 this.mostrarMapa(resultado);
             });
     }
+    //Muestra los pines
     mostrarMapa(datos){
         // Almacena infoWindow Activo
         let infoWindowActivo;
@@ -99,12 +101,13 @@ class Interfaz{
     // Filtrado de sugerencias
     filtrarSugerencias(resultados, busqueda){
         //console.log(resultados);        
-        const filtro = resultados.filter(filtro => filtro.adreca_nom.indexOf(busqueda) > 0);
+        //const filtro = resultados.filter(filtro => filtro.adreca_nom.indexOf(busqueda) > 0);
+        const filtro = resultados.filter( filtro => filtro.adreca_nom.indexOf(busqueda) !== -1);
            
         console.log(filtro);
-
-        /* const filtro = dato.filter( filtro => filtro.adreca_nom.indexOf('Sant') !== 1);
-        console.log(filtro); */
-         
+        //Inicializar mapa otra vez
+        this.inicializarMapa();    
+        //Monstrar pines del filtro
+        this.mostrarMapa(filtro);    
     }
 }
